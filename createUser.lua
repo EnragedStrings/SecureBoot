@@ -25,21 +25,21 @@ if password ~= vpassword then
         print("Verify Password")
         vpassword = io.read()
     end
-else
-    local key = data.md5(password)
-    local IV = data.md5(computer.address())
-    local encrypted = data.encrypt(username, key, IV)
-    print(encrypted)
-    local decrypted = data.decrypt(encrypted, key, IV)
-    if username == decrypted then
-        print("Encryption Successful!")
-        local file = assert(io.open("/etc/users", "w"))
-        local data = file:read(100000)
-        if data == nil then
-            data = ""
-        end
-        file:write(data..encrypted.."\n")
-        file:close()
-        term.clear()
+end
+
+local key = data.md5(password)
+local IV = data.md5(computer.address())
+local encrypted = data.encrypt(username, key, IV)
+print(encrypted)
+local decrypted = data.decrypt(encrypted, key, IV)
+if username == decrypted then
+    print("Encryption Successful!")
+    local file = assert(io.open("/etc/users", "w"))
+    local data = file:read(100000)
+    if data == nil then
+        data = ""
     end
+    file:write(data..encrypted.."\n")
+    file:close()
+    term.clear()
 end
