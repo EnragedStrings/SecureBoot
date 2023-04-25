@@ -9,6 +9,8 @@ local shell = require("shell")
 local fs = require("filesystem")
 local term = require("term")
 
+--Ensure that the home variable has the current floppy disk address. a20 is the example.
+
 local home = '/mnt/a20/'
 
 local bootLocation = home..'secureBoot.lua'
