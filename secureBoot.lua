@@ -1,3 +1,7 @@
+local process = require("process")
+local component = require("component")
+local term = require("term")
+
 local shown = false
 while not (component.isAvailable("gpu") and component.isAvailable("data")) do
   if shown == false then 
@@ -8,9 +12,6 @@ while not (component.isAvailable("gpu") and component.isAvailable("data")) do
   os.sleep(1)
 end
 
-local process = require("process")
-local component = require("component")
-local term = require("term")
 local computer = require("computer")
 local event = require("event")
 local gpu = require("component").gpu
