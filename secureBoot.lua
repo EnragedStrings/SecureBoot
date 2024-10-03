@@ -9,6 +9,16 @@ local data = require("component").data
 require("ESinput")
 require("ESbuttons")
 
+local shown = false
+while not (component.isAvailable("gpu") and component.isAvailable("data") do
+  if shown == false then 
+    term.clear()
+    print("Key components not found.") 
+    shown = true
+  end
+  os.sleep(1)
+end
+
 function split(s, delimiter)
     if s ~= nil then
       result = {};
