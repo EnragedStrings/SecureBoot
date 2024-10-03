@@ -2,6 +2,8 @@ local process = require("process")
 local component = require("component")
 local term = require("term")
 
+process.info().data.signal = function() end
+
 local shown = false
 while not (component.isAvailable("gpu") and component.isAvailable("data")) do
   if shown == false then 
